@@ -24,7 +24,7 @@ public class Crop extends Entity{
     }
 
     public boolean takeCrop (int reducedQuantity){
-        if (reducedQuantity < quantity){
+        if (reducedQuantity <= quantity){
             quantity = quantity - reducedQuantity;
             return true;
         }
@@ -32,6 +32,9 @@ public class Crop extends Entity{
         return false;
     }
 
+    public String getCSV(){
+        return id + "," + name + "," + cropType + "," + quantity;
+    }
 
     public String getCropType() {
         return cropType;

@@ -22,7 +22,26 @@ public class Animal extends Entity{
         return ("Id: " + getId() + ", Name: " + name + ", Species: " + species + ", Diet: " + getAcceptableCropTypesCSV(", "));
     }
 
-    // Don't know if it works or not but maybe?
+    public void feed(Crop crop){
+        boolean acceptedCropType = false;
+        for(int i = 0; i < acceptableCropTypes.size(); i++){
+            if(acceptableCropTypes.get(i).equals(crop.getCropType())){
+                acceptedCropType = true;
+                boolean successfulFeed = crop.takeCrop(1);
+                if(successfulFeed){
+                    System.out.println("You have successfully fed " + crop.getName() + " to your animal.");
+                }
+                else {
+                    System.out.println("The feeding was unsuccessful because the quantity of the crop was too low.");
+                }
+                break;
+            }
+        }
+        if(!acceptedCropType){
+            System.out.println("The feeding was unsuccessful because the animal doesn't have that crop type in it's diet.");
+        }
+    }
+
     private String getAcceptableCropTypesCSV(String delimiter){
         String string = "";
         for(int i = 0; i < acceptableCropTypes.size(); i++){
@@ -35,7 +54,6 @@ public class Animal extends Entity{
         return string;
     }
 
-    // How do I get make a list into a string to write it out?
     public String getCSV(){
         return id + "," + name + "," + species + "," + getAcceptableCropTypesCSV("@");
     }
@@ -47,4 +65,5 @@ public class Animal extends Entity{
     public void setSpecies(String species) {
         this.species = species;
     }
+
 }

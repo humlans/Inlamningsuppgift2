@@ -1,0 +1,12 @@
+1,Corn,Vegetable,50
+2,Pear,Fruit,68
+3,Pumpkin seed,Seed,200
+4,Spinach,Vegetable,13
+5,Sunflower seed,Seed,450
+6,Broccoli,Vegetable,10
+7,Salad,Leaf,4
+8,Grapes,Fruit,149
+9,Banana,Fruit,53
+10,Leaf,Eucalyptus,26
+11,Kiwi,Fruit,2
+12,Wheat,Seed,500
