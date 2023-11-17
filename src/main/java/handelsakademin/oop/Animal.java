@@ -7,7 +7,7 @@ public class Animal extends Entity{
     private ArrayList<String> acceptableCropTypes = new ArrayList<>();
     private static int nextId = 1;
 
-    //Constructor
+    //The constructor of the crop and animal is very similar except that the animal also takes an arraylist.
     public Animal (String name, String species, ArrayList<String> acceptableCropTypes) {
         super(name);
         id = nextId;
@@ -16,12 +16,21 @@ public class Animal extends Entity{
         this.acceptableCropTypes = acceptableCropTypes;
     }
 
+    // Because of animals that are saved in the files there is another constructor that also takes the id.
+    public Animal(int id, String name, String species, ArrayList<String> acceptableCropTypes){
+        super(name);
+        this.id = id;
+        this.species = species;
+        this.acceptableCropTypes = acceptableCropTypes;
+    }
+
     @Override
     public String getDescription(){
-        String[] acceptableCropTypesList = new String[acceptableCropTypes.size()];
         return ("Id: " + getId() + ", Name: " + name + ", Species: " + species + ", Diet: " + getAcceptableCropTypesCSV(", "));
     }
 
+    // The feed function checks if the animal has the crop in their diet
+    // and then if there were enough amount of the chosen crop.
     public void feed(Crop crop){
         boolean acceptedCropType = false;
         for(int i = 0; i < acceptableCropTypes.size(); i++){
@@ -42,6 +51,8 @@ public class Animal extends Entity{
         }
     }
 
+    // This will return a string made from the acceptableCropTypes list
+    // separated by a string chosen from the place where it is called through the delimiter variable.
     private String getAcceptableCropTypesCSV(String delimiter){
         String string = "";
         for(int i = 0; i < acceptableCropTypes.size(); i++){
@@ -54,6 +65,7 @@ public class Animal extends Entity{
         return string;
     }
 
+    // Returns a string separated by ',' and '@'
     public String getCSV(){
         return id + "," + name + "," + species + "," + getAcceptableCropTypesCSV("@");
     }
